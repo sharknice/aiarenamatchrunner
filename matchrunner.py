@@ -11,7 +11,7 @@ race2 = "T"
 type2 = "python"
 
 mapList = ["2000AtmospheresAIE", "BerlingradAIE", "BlackburnAIE", "CuriousMindsAIE", "GlitteringAshesAIE", "HardwireAIE"]
-mapIndex = 0;
+mapIndex = 0
 
 for x in range(10):
     matchString = bot1 + "," + race1 + "," + type1 + "," + bot2 + "," + race2 + "," + type2 + "," + mapList[mapIndex]
