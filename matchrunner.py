@@ -2,26 +2,23 @@ import os
 
 print("matches started")
 
-bot1 = "basic_bot"
-race1 = "T"
-type1 = "python"
+bot = "basic_bot,T,python"
+enemyBots = ["loser_bot,T,python"]
+mapList = ["InsideAndOutAIE", "MoondanceAIE", "StargazersAIE", "WaterfallAIE", "HardwireAIE", "BerlingradAIE"]
 
-bot2 = "loser_bot"
-race2 = "T"
-type2 = "python"
+gameCount = 0
+totalGames = len(enemyBots) * len(mapList)
 
-mapList = ["2000AtmospheresAIE", "BerlingradAIE", "BlackburnAIE", "CuriousMindsAIE", "GlitteringAshesAIE", "HardwireAIE"]
-mapIndex = 0
+print("starting " + str(totalGames) + " games")
 
-for x in range(10):
-    matchString = bot1 + "," + race1 + "," + type1 + "," + bot2 + "," + race2 + "," + type2 + "," + mapList[mapIndex]
-    f = open("matches", "w")
-    f.write(matchString)
-    f.close()
-    print("match " + str(x) + ": " + matchString)
-    os.system('cmd /c "docker-compose up"')
-    mapIndex = mapIndex + 1
-    if mapIndex >= mapList.__len__():
-        mapIndex = 0
+for enemyBot in enemyBots:
+    for map in mapList:
+        gameCount = gameCount + 1
+        matchString = bot + "," + enemyBot + "," + map
+        f = open("matches", "w")
+        f.write(matchString)
+        f.close()
+        print("starting match " + str(gameCount) + " of " + str(totalGames) + ": " + matchString)
+        os.system('cmd /c "docker-compose up"')
 
 print("matches ended")
